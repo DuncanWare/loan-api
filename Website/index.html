@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A UI through which to CRUD the loans API">
+    <title>YouLend | Loan API</title>
+    <link rel="favicon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="shortcut icon"
+    href="http://cdn.sstatic.net/stackoverflow/img/favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <svg version="1.1" class="navbar--logo svg-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" enable-background="new 0 0 53 47" xml:space="preserve" width="340" height="50" viewBox="0 0 170 25"><g id="logoOutlineContainer" fill="#FFF"><path id="logoOutline" opacity="1" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" d="M0 12.498 L 36.82 12.5 31.943 19.2 20.262 0 5.493 22.598 33.94 0 21 25 5.62 5.163 Z"></path></g><g id="filledLogo" fill="#FFF"><path d="M0 12.498h11.75L5.62 5.163M27.873 12.5l4.07 6.7 4.98-6.7M5.493 22.598L14.29 15.7l-2.54-3.202M20.262 0L11.75 12.498h6.638l6.416-5.03"></path><path d="M27.16 12.5h-8.773l-4.095 3.197 7.368 9.287L27.872 12.5h-.712zm-12.87 3.2l.002-.003-.003-.004v.007zm10.514-8.233L33.942.29l-6.07 12.21"></path></g><g transform="translate(49.393 6.122)"><defs><filter id="a" filterUnits="userSpaceOnUse" x="0" y="0" width="120.475" height="12.91"><feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"></feColorMatrix></filter></defs><mask maskUnits="userSpaceOnUse" x="0" y="0" width="120.475" height="12.91" id="b"><path fill="#FFF" d="M120.473 0H0v12.91h120.473V0z" filter="url(#a)"></path></mask><path mask="url(#b)" fill="#FFF" d="M2.25.197H0l4.196 7.748v4.793h2.076V7.874L10.484.197H8.236L5.242 5.92 2.25.197zM28.485 1.69C27.46.563 26.005 0 24.125 0c-1.91 0-3.377.554-4.406 1.664-1.03 1.11-1.546 2.7-1.546 4.77 0 2.07.51 3.667 1.535 4.79 1.023 1.125 2.49 1.687 4.4 1.687 1.883 0 3.34-.565 4.37-1.697 1.03-1.133 1.545-2.72 1.545-4.76 0-2.05-.514-3.636-1.54-4.763zM21.32 2.95c.63-.794 1.566-1.19 2.806-1.19 1.228 0 2.153.396 2.773 1.19.617.796.927 1.962.927 3.5 0 1.562-.312 2.737-.938 3.526-.627.79-1.554 1.185-2.78 1.185-1.236 0-2.168-.4-2.796-1.196-.63-.797-.943-1.968-.943-3.512 0-1.538.316-2.704.948-3.5l.002-.002zM47.23.198v7.918c0 2.03-.975 3.045-2.923 3.045-1.005 0-1.747-.245-2.232-.737-.483-.49-.726-1.255-.726-2.29V.197H39.27v8.08c0 1.442.435 2.574 1.306 3.398.87.823 2.09 1.235 3.658 1.235 1.057 0 1.962-.187 2.72-.562.76-.375 1.34-.91 1.74-1.604.4-.695.6-1.507.6-2.433V.198H47.23zm18.98 12.54v-.822h-6.03V.196h-.88V12.74h6.912zm15.735-.805h-6.03v-5.38h5.692V5.75h-5.69V1.004h6.028V.197h-6.912v12.54h6.912v-.804zM100.647.197h-.856V8.38c0 .928.026 1.905.08 2.934h-.054L92.334.197h-.88v12.54h.845v-8.13c0-.674-.035-1.675-.105-3.002h.07l7.49 11.133h.892V.198zm18.248 1.57C117.84.72 116.305.197 114.29.197h-3.42v12.54h3.03c2.157 0 3.79-.536 4.904-1.614s1.67-2.67 1.67-4.774c0-2.01-.526-3.536-1.58-4.583zm-5.048 10.2h-2.094v-11h2.328c1.783 0 3.134.453 4.054 1.36.92.906 1.38 2.257 1.38 4.053 0 3.723-1.888 5.584-5.666 5.584v.003z"></path></g></svg>
+        </div>
+    </header>
+
+<main role="main" class="inner cover">
+    <h1 class="cover-heading">Loan API</h1>
+        <p class="lead">To update the loan database, first choose from the options below.</p>
+        <script type="text/x-template" id="modal-template">
+          <transition name="modal">
+            <div class="modal-mask">
+              <div class="modal-wrapper">
+                <div class="modal-container">
+                  <div class="modal-header">
+                    <slot name="header">
+                      default header
+                    </slot>
+                </div>
+            <slot name="instruction">
+                Complete the relevant field(s) below.
+            </slot>
+                <div class="modal-body">
+                    <slot name="body">
+                        body here
+                    </slot>
+                </div>
+                <div class="modal-footer">
+                    <slot name="right-button">
+                    </slot>
+                    <button class="modal-button-left" @click="$emit('close')">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</transition>
+</script>
+
+        <script type="text/x-template" id="modal-template-wide">
+          <transition name="modal">
+            <div class="modal-mask">
+              <div class="modal-wrapper">
+                <div class="modal-container-wide">
+                  <div class="modal-header">
+                    <slot name="header">
+                      default header
+                    </slot>
+                </div>
+            <slot name="instruction">
+                Complete the relevant field(s) below.
+            </slot>
+                <div class="modal-body">
+                    <slot name="body">
+                        body here
+                    </slot>
+                </div>
+                <div class="modal-footer">
+                    <slot name="right-button">
+                    </slot>
+                    <button class="modal-button-left" @click="$emit('close')">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</transition>
+</script>
+
+<div id="app">
+    <p class="lead">
+        <div id="new-loan-btn">
+          <button id="show-modal" class="btn btn-lg btn-secondary" @click="showModal = true">New Loan</button>
+          <div v-cloak>
+              <modal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">New Loan</h3>
+                <p slot="instruction">Please complete all fields below.</p>
+                <p slot="body">Loan ID<input v-model="id" placeholder="e.g. 123456"></p>
+                <p slot="body">Borrower Name<input v-model="borrowerName" placeholder="e.g. John Smith"></p>
+                <p slot="body">Repayment Amount (£)<input v-model="repaymentAmount" placeholder="e.g. 100000"></p>
+                <p slot="body">Funding Amount (£)<input v-model="fundingAmount" placeholder="e.g. 90000"></p>
+                <template slot="right-button">
+                    <button class="modal-button-right" v-on:click.prevent="process">
+                        Create
+                    </button>
+                </template>
+            </modal>
+        </div>
+    </div>
+</p>
+
+<p class="lead">
+    <div id="view-id-btn">
+      <button id="show-modal" class="btn btn-lg btn-secondary" @click="showModal = true">View By ID</button>
+      <div v-cloak>
+          <modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">View By ID</h3>
+            <p slot="instruction">Please enter the loan ID below.</p>
+            <p slot="body">Loan ID<input v-model="id" placeholder="e.g. 123456"></p>
+            <template slot="right-button">
+                <button class="modal-button-right" v-on:click.prevent="process">
+                    View
+                </button>
+            </template>
+        </modal>
+    </div>
+</div>
+</p>
+
+<p class="lead">
+    <div id="view-all-btn">
+      <button id="show-modal" class="btn btn-lg btn-secondary" @click="process(); showModal = true">View All</button>
+      <div v-cloak>
+            <wide-modal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">View All</h3>
+                <p slot="instruction">Here are all the loans in the database...</p>
+                <div slot="body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td><b>Loan ID</b></td>
+                                    <td><b>Borrower Name</b></td>
+                                    <td><b>Repayment Amount (£)</b></td>
+                                    <td><b>Funding Amount (£)</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="item of tableData">
+                                    <td>{{ item.id }}</td>
+                                    <td>{{ item.borrowerName }}</td>
+                                    <td>{{ item.repaymentAmount }}</td>
+                                    <td>{{ item.fundingAmount }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </wide-modal>
+        </div>
+    </div>
+</p>
+
+<p class="lead">
+    <div id="delete-id-btn">
+      <button id="show-modal" class="btn btn-lg btn-secondary" @click="showModal = true">Delete By ID</button>
+      <div v-cloak>
+          <modal v-if="showModal" @close="showModal = false">
+            <h3 slot="header">Delete By ID</h3>
+            <p slot="instruction">Please enter the loan ID below.</p>
+            <p slot="body">Loan ID<input v-model="id" placeholder="e.g. 123456"></p>
+            <template slot="right-button">
+                <button class="modal-button-right" v-on:click.prevent="process">
+                    Delete
+                </button>
+            </template>
+        </modal>
+    </div>
+</div>
+</p>
+</div>
+</main>
+
+<footer class="mastfoot mt-auto">
+    <div class="inner">
+        <p>By <a href="mailto:wareduncan@gmail.com">Duncan Ware</a></p>
+    </div>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="app.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<app-root></app-root>
+</body>
+</html>

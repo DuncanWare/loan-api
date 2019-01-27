@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouLendApi", "YouLendApi\YouLendApi.csproj", "{92EEA556-D72C-426D-86D0-7FF394A328DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92EEA556-D72C-426D-86D0-7FF394A328DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92EEA556-D72C-426D-86D0-7FF394A328DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92EEA556-D72C-426D-86D0-7FF394A328DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92EEA556-D72C-426D-86D0-7FF394A328DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
